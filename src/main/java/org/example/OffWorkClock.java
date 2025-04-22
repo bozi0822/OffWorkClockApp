@@ -21,11 +21,24 @@ public class OffWorkClock extends JFrame {
 
 	private static final String TODAY = LocalDateTime.now().toString(DateUtils.DATE_PATTERN) + " ";
 	private static final String TIME_FORMAT = "HH:mm:ss";
+
+	/**
+	 * 灵活上班时间时间： 8：30 - 8：:45
+	 */
 	private static final String ON_DUTY_START_SETTING_STR = "08:30:00";
 	private static final String ON_DUTY_END_SETTING_STR = "08:45:00";
+
 	private static final Date ON_DUTY_START_SETTING = DateUtils.stringToDate(TODAY + ON_DUTY_START_SETTING_STR, DateUtils.DATE_TIME_PATTERN);
 	private static final Date ON_DUTY_END_SETTING = DateUtils.stringToDate(TODAY + ON_DUTY_END_SETTING_STR, DateUtils.DATE_TIME_PATTERN);
+
+	/**
+	 * 上班时长（小时）
+	 */
 	private static final Integer ON_DUTY_LASTING_HOUR_SETTING = 8;
+	/**
+	 * 上班时长（分钟）
+	 * ** 上班总时长为 上班时长（小时）+ 上班时长（分钟）
+	 */
 	private static final Integer ON_DUTY_LASTING_MIN_SETTING = 30;
 
 
