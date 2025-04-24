@@ -54,7 +54,7 @@ public class OffWorkClock extends JFrame {
 
 		// 其他初始化代码
 		JMenuBar menuBar = new JMenuBar();
-		JMenu fileMenu = new JMenu("File");
+		JMenu fileMenu = new JMenu("页面选择");
 		JMenuItem openItem = new JMenuItem("首页    ✅");
 		JMenuItem saveItem = new JMenuItem("配置页");
 		fileMenu.add(openItem);
