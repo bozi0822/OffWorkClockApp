@@ -98,7 +98,7 @@ public class OffWorkClock extends JFrame {
 
 
 	public void initConfigPage() {
-		setTitle("准时下班");
+		setTitle("准时下班 配置页");
 		setSize(600, 150);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
@@ -129,9 +129,9 @@ public class OffWorkClock extends JFrame {
 
 		settingButton = new JButton();
 		settingButton.setFont(new Font("Arial", Font.PLAIN, GLOBAL_FONT_SIZE));
-		settingButton.setText("Save");
+		settingButton.setText("保存");
 		settingButton.addActionListener(e -> {
-			settingButton.setText("Loading");
+			settingButton.setText("计算中");
 			String startWorkingFrom = settingTextArea1.getText();
 			String startWorkingTo = settingTextArea2.getText();
 			if (checkTimeFormat(startWorkingFrom.isEmpty(), "还没设置灵活上班开始时间")) return;
@@ -140,21 +140,21 @@ public class OffWorkClock extends JFrame {
 			if (checkTimeFormat(!DateUtils.isTimeFormat(startWorkingTo, TIME_FORMAT), "灵活上班结束时间配置格式为 " + TIME_FORMAT)) return;
 			ON_DUTY_START_SETTING_STR = startWorkingFrom;
 			ON_DUTY_END_SETTING_STR = startWorkingTo;
-			settingButton.setText("Save success");
+			settingButton.setText("保存成功");
 			try {
 				Thread.sleep(2);
 			} catch (InterruptedException ex) {
 				throw new RuntimeException(ex);
 			}
-			settingButton.setText("Save");
-//			timer.stop();
-			startButton.setText("Start");
+			settingButton.setText("保存");
+			timer.stop();
+			startButton.setText("开始");
 		});
 		add(settingButton);
 	}
 
 	public void initMainPage() {
-		setTitle("准时下班");
+		setTitle("准时下班 首页");
 		setSize(600, 150);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
@@ -172,11 +172,11 @@ public class OffWorkClock extends JFrame {
 
 		startButton = new JButton();
 		startButton.setFont(new Font("Arial", Font.PLAIN, GLOBAL_FONT_SIZE));
-		startButton.setText("Start");
+		startButton.setText("开始");
 		startButton.addActionListener(e -> {
 			timer = new Timer(1000, new TimeListener());
 			timer.start();
-			startButton.setText("Loading");
+			startButton.setText("计算中");
 		});
 		add(startButton);
 
@@ -227,9 +227,7 @@ public class OffWorkClock extends JFrame {
 			}
 
 			timeLabel1.setText("今天可以下班的时间是：" + endWorkTime);
-			startButton.setText("Fresh");
-
-			System.out.println(getSize());
+			startButton.setText("刷新");
 		}
 	}
 
@@ -237,7 +235,7 @@ public class OffWorkClock extends JFrame {
 		if (text) {
 			timeLabel.setText(TIME_FORMAT);
 			timeLabel1.setText("                              ");
-			startButton.setText("Start");
+			startButton.setText("开始");
 			return true;
 		}
 		return false;
