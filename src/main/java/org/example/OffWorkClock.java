@@ -55,8 +55,8 @@ public class OffWorkClock extends JFrame {
 		// 其他初始化代码
 		JMenuBar menuBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("页面选择");
-		JMenuItem openItem = new JMenuItem("首页    ✅");
-		JMenuItem saveItem = new JMenuItem("配置页");
+		JMenuItem openItem = new JMenuItem("✓ 首页");
+		JMenuItem saveItem = new JMenuItem("    配置页");
 		fileMenu.add(openItem);
 		fileMenu.add(saveItem);
 		menuBar.add(fileMenu);
@@ -67,8 +67,8 @@ public class OffWorkClock extends JFrame {
 			initMainPage();
 			revalidate();
 			repaint();
-			openItem.setText("首页    ✅");
-			saveItem.setText("配置页");
+			openItem.setText("✓ 首页");
+			saveItem.setText("    配置页");
 			setSize(600, 150);
 		});
 		saveItem.addActionListener(e -> {
@@ -76,8 +76,8 @@ public class OffWorkClock extends JFrame {
 			initConfigPage();
 			revalidate();
 			repaint();
-			openItem.setText("首页");
-			saveItem.setText("配置页  ✅");
+			openItem.setText("    首页");
+			saveItem.setText("✓ 配置页");
 			setSize(900, 150);
 		});
 
